@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #wrap>div{
+            border: 1px solid black;
+            width: 100%;
+        }
+        .page1{
+            height: 700px;
+            padding-top: 10px;
+        }
+        .inner{
+            width: 97%;
+            height: 675px;
+            margin: 0 auto;
+            background-color: #F5F5F5;
+            padding: 15%;
+            position: relative;
+        }
+        .inner div{
+            width: 85%;
+            margin: auto;
+        }
+        .inner div:first-child{
+            color: #99948C;
+            margin-bottom: 18px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+        .inner div:nth-child(2){
+            font-size: 30px;
+            color: #444444;
+        }
+        .inner button{
+            position: absolute;
+            top: 65%;
+            left: 20%;
+            width: 120px;
+            height: 40px;
+            background-color: #F5F5F5;
+            border: 2px solid #CCC8C2;
+            color: #777777;
+            font-size: 12px;
+        }
+        .page2{
+            height: 100vh;
+            background-image: url("han.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .opac{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(23, 25, 37, 0.96);
+            padding-top: 12%;
+            padding-left: 20%;
+        }
+        .idx{
+            position: relative;
+        }
+        .num{
+            position: absolute;
+            font-size: 100px; 
+        }
+        .num div{
+            position: absolute;
+           font-size: 30px;  
+        }
+/*
+        .idx div:last-child{
+            color: #1EB4D0;
+            font-size: 20px;
+            top: 20px;
+        }
+*/
+        .title{
+            position: relative;
+            color: white;
+            font-weight: 900;
+        }
+        .title div{
+            font-size: 70px;
+            position: absolute;
+            top: 75px;
+        }
+        .source{
+            position: relative;
+        }
+        .source div:last-child{
+            position: absolute;
+            top: 360px;
+            left: 9%;
+            color: white;
+            font-weight: 200;
+            
+        }
+        .nemo{
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: #1EB4D0;
+            top: 370px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="page1">
+            <div class="inner">
+                <div>GABE ABADILLA</div>
+                <div>Hello, I'm a freelance designer from beautiful San Diego, California. I collaborate with startups, agencies and businesses to concept and design thoughtful digital experiences.</div>
+                <button>EMAIL ME</button>
+            </div>
+        </div>
+        <div class="page2">
+            <div class="opac">
+                <div class="idx">
+                    <div class="num">01
+                        <div>TRIBECA SHORTLIST</div>
+                    </div>
+                    
+                </div>
+                <div class="title">
+                    <div>MOVIES<br>WORTH<br>WATCHING</div>
+                </div>
+                <div class="source">
+                    <div class="nemo"></div>
+                    <div><i>Art Direction, Visual Design, UX</i></div>
+                </div>
+            </div>
+        </div>
+        <div class="page3"></div>
+        <div class="page4"></div>
+    </div>
+</body>
+</html>

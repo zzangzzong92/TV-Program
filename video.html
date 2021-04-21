@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+        .clips{
+            width: 80%;
+            margin-left: 10%;
+        }
+        .bsTitle{
+            width: 100%;
+/*            border: 1px solid white;*/
+            height: 20vh;
+            color: white;
+            margin-bottom: 3%;
+        }
+        #one, #two, #three, #four{
+            margin-bottom: 5%;
+            display: flex;
+        }
+        .number{
+            width: 20%;
+            height: 150px;
+            color: lightgray;
+            font-size: 150px;
+            font-family: 'Monoton', cursive; 
+        }
+        #one .number, #three .number{
+            text-align: right;
+            
+        }
+        .screen{
+            width: 80%;
+            height: 150px;
+            border: 1px solid white;
+/*            margin: 10px 24%;*/
+            padding: 10px;
+            padding-left: 20px;
+            overflow: scroll;
+            overflow-y: hidden;
+            position: relative;
+        }
+        .s1, .s2, .s3, .s4{
+            position: absolute;
+            display: flex;
+            justify-content: space-between
+        }
+        .thumbnail{
+            width: 170px;
+            height: 130px;
+            margin-right: 25px;
+        }
+        .thumbnail img{
+            width: 100%;
+        }
+        .thumbnail:hover{
+            transform: scale(1.2);
+            transition: all 0.7s;
+        }
+        .backG{
+            position: fixed;
+            width: 100%;
+            height: 90vh;
+            margin-top: 3%;
+            background-color: rgba(256, 256, 256, 0.5);
+            z-index: 500;
+            display: none;
+        }
+        .pop{
+            position: fixed;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 77vh;
+            z-index: 1000;
+            display: none;
+        }
+        iframe{
+            width: 100%;
+            height: 100%;
+        }
+        input{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            background-image: url("x.png");
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+            right: 1%;
+            top: 1%;
+        }
+        ::-webkit-scrollbar {
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: white;
+            border-radius: 15px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            background-color: black; 
+            border: 1px solid white;
+        }
+        ::-webkit-scrollbar-button {
+              background-color: black;
+        }
+    </style>
+</head>
+<body>
+   <div class="backG"></div>
+    <div class="clips">
+        <div class="bsTitle">제목</div>
+        <div id="one">
+            <div class="number">1</div>
+            <div class="screen">
+                <div class="s1">
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/S1ioh5ielAk/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/WPJ13B7AkVU/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/CPcINUzR6Ds/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/XBA2amrXIr8/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/jHBeH4_g_NY/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/1flMLrCzz9g/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/W8PXMLg-IAU/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/XqungBq_1DA/0.jpg"></div>
+                </div>
+            </div>
+        </div>
+        <div id="two">       
+            <div class="screen">
+                <div class="s2">
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/bfslaJu2-RA/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/BxQ1iWwpdKY/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/NMpYdU_dPhM/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/B0BqBbf4VTE/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/nrg1yxtzxus/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/Qbl6vjlwj8s/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/GnZTQo11Th0/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/vrBkMKspIAc/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/FtHFHgmsxeM/0.jpg"></div>
+                </div>
+            </div>
+            <div class="number">2</div>
+        </div>
+        <div id="three">
+            <div class="number">3</div>
+            <div class="screen">
+                <div class="s3">
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/-6tTv68xBhE/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/VaV9Acqd0HA/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/8JC3hIrlhvc/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/4TXKq_Gb86Y/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/LQtVdUBp7Pg/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/-oZZ4psXakU/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/7SoxBhIH-AQ/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/tLUR7Vz1TVY/0.jpg"></div>
+                </div>
+            </div>
+        </div>
+        <div id="four">
+            <div class="screen">
+                <div class="s4">
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/iqzxRt0AB5s/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/wEgvCBcfFLI/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/xyeVRDQOGf0/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/2Eutw0bshlo/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/vcyoZlJsVTA/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/z0B3IwoEoYE/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/2WXwAvGe7Sk/0.jpg"></div>
+                    <div class="thumbnail"><img src="https://img.youtube.com/vi/DO845EqU3eE/0.jpg"></div>
+                </div>
+            </div>
+            <div class="number">4</div>
+        </div>  
+    </div>
+    <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/S1ioh5ielAk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/WPJ13B7AkVU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/CPcINUzR6Ds" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div> 
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/XBA2amrXIr8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/jHBeH4_g_NY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/1flMLrCzz9g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/W8PXMLg-IAU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/XqungBq_1DA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/bfslaJu2-RA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/BxQ1iWwpdKY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/NMpYdU_dPhM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/B0BqBbf4VTE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/nrg1yxtzxus" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/Qbl6vjlwj8s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/GnZTQo11Th0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/vrBkMKspIAc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/FtHFHgmsxeM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/-6tTv68xBhE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/VaV9Acqd0HA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+    <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/8JC3hIrlhvc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/4TXKq_Gb86Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/LQtVdUBp7Pg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div> 
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/-oZZ4psXakU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/7SoxBhIH-AQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/tLUR7Vz1TVY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/iqzxRt0AB5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/wEgvCBcfFLI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/xyeVRDQOGf0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/2Eutw0bshlo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/vcyoZlJsVTA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/z0B3IwoEoYE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     <div class="pop"><iframe width="560" height="315" src="https://www.youtube.com/embed/2WXwAvGe7Sk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <input type="button" id="out">
+    </div>
+     
+    
+    <script> 
+        $(document).ready(function(){
+            $(".thumbnail").eq(0).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(0).fadeIn(500);
+                });
+            });
+           $(".thumbnail").eq(1).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(1).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(8).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(8).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(9).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(9).fadeIn(500);
+                });
+            });
+             $(".thumbnail").eq(10).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(10).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(17).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(17).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(18).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(18).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(25).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(25).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(26).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(26).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(27).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(27).fadeIn(500);
+                });
+            });
+            $(".thumbnail").eq(28).click(function(){
+                $(".backG").fadeIn(500, function(){
+                    $(".pop").eq(28).fadeIn(500);
+                });
+            });
+            
+            $("input").click(function(){
+                $(".pop").fadeOut(500, function(){
+                    $(".backG").fadeOut(500);
+                });
+            });
+            
+          
+
+            
+//            $(".thumbnail").click(function(){
+//                var idx = $(".thumbnail").index();
+//                alert(idx);
+//                getClip(idx);
+//            });
+//            
+//            
+//            
+//            function getClip(aa){
+//                $(".thumbnail").eq(aa).click(function(){
+//                    $(".backG").fadeIn(500, function(){
+//                        $(".pop").eq(aa).fadeIn(500);
+//                    });
+//                });
+//            }
+            
+        });
+        
+        
+       
+       
+        
+        
+    </script>
+</body>
+</html>

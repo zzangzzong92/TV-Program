@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #wrap{
+            position: relative;
+        }
+        .page1, .page2, .page3, .page4{
+            width: 100%;
+            height: 100vh;
+/*            border: 1px solid white;*/
+/*            background-color: black;*/
+/*            overflow: hidden;*/
+            position: relative;
+            overflow: hidden;
+        }
+        .page1{
+            background-color: white;
+        }
+        .nav{
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            padding: 6px;
+            border: 4px solid lightgray;
+            border-radius: 50%;
+            background-color: beige;
+            margin-left: 2%;
+            margin-top: 2%;
+            z-index: 500;
+        }
+        .nav img{
+            width: 100%;
+            height: 100%;
+        }
+        .nav:hover{
+            background-color: navy;
+        }
+        .first, .second, .third, .forth{
+            
+        }
+        .title{
+            width: 70%;
+            height: 60vh;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            margin-left: 15%;
+            top: 15%;
+/*            overflow: hidden;*/
+            opacity: 0.2;
+        }
+        .titleimg{
+            width: 25%;
+            position: absolute;
+        }
+        .titleimg img{
+            position: absolute;
+            width: 100%;
+        }
+        .titleimg img:nth-child(2){
+            display: none;
+        }
+        .titleimg:first-child{
+            top: -20%;
+        }
+        .titleimg:nth-child(2){
+            left: 26%;
+            top: 20%;
+        }
+        .titleimg:nth-child(3){
+            left: 50%;
+            top: -20%;
+        }
+        .titleimg:nth-child(4){
+            left: 74%;
+            top: 20%;
+        }   
+        .back{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .page2{
+            color: white;
+            background-color: midnightblue;
+        }
+        .page2 button{
+            position: absolute;
+            z-index: 1000;
+            width: 70px;
+            height: 200px;
+            opacity: 0;
+        }
+        .left{
+            left: 2%;
+            top: 38%;
+        }
+        .right{
+            left: 94%;
+            top: 38%;
+        }
+        .seasonWrap{
+            width: 100%;
+            height: 100vh;
+        }
+        .season1, .season2, .season3, .season4{
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            position: absolute;
+        }
+        .map{
+            margin-left: 42%;
+            margin-top: 5%;
+            width: 43%;
+            position: relative;
+            overflow: hidden;
+        }
+        .map img{
+            width: 100%;
+        }
+        .pin{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+        }
+        .pin img{
+            width: 100%;
+        }
+        .map{
+            opacity: 0;
+        }
+        .red1{
+            left: 3.5%;
+        }
+        .red2{
+            left: 2%;
+        }
+        .red3{
+            left: 5.5%;
+        }
+        .red4{
+            left: 6.5%;
+        }
+        .red1, .red2, .red3, .red4{
+            top: -100px;
+        }
+        .yellow1{
+            left: 2%;
+            top: 25.5%;
+        }
+        .yellow2{
+            left: 9%;
+            top: 21.3%;
+        }
+        .green1{
+            left: 6%;
+            top: 19%;
+        }
+        .green2{
+            left: 8%;
+            top: 19%;
+        }
+        .green3{
+            left: 8%;
+            top: 24%; 
+        }
+        .green4{
+            left: 37.8%;
+            top: 27%; 
+        }
+        .blue{
+            left: 37.8%;
+            top: 27%;
+        }
+        .pre, .next{
+            width: 70px;
+            height: 180px;
+            position: absolute;
+        }
+        .pre{
+            left: 1%;
+            top: 280px;
+        }
+        .next{
+            left: 94%;
+            top: 280px;
+        }
+        .pre img, .next img{
+            width: 100%;
+            height: 100%;
+        }
+        .subtitle{
+            width: 45%;
+            position: absolute;
+            top: 65%;
+            left: -40%;
+        }
+        .subtitle img{
+            width: 100%;
+        }
+        .performer1, .performer2, .performer3, .performer4{
+            width: 130px;
+            height: 130px;
+            border-bottom: 4px solid white;
+/*            border-radius: 50%;*/
+            position: absolute;
+            top: 70%;
+            right: 18%;
+            text-align: center;
+/*            background-color: rgba(256, 256, 256, 0.3);*/
+            transition: border-width 0.4s linear;
+        }
+        .performer1 img, .performer2 img, .performer3 img, .performer4 img{
+            width: 72%;
+            margin-top: 15%;
+        }
+        .performer1:hover, .performer2:hover, .performer3:hover, .performer4:hover{
+            border: 4px solid #46EB7D;
+        }
+        .infoscreen{
+            position: fixed;
+            width: 100%;
+            height: 85vh;
+            background-color: rgba(256, 256, 256, 0.9);
+            padding: 5%;
+            top: 4%;
+            display: none;
+        }
+        .pop1, .pop2, .pop3, .pop4{
+            position: absolute;
+            width: 80%;
+            height: 75vh;
+            background-color: rgba(256, 256, 256, 0.8);
+            top: 12.5%;
+            left: 10.5%;
+            padding: 5%;
+            border: 1px solid black;
+            overflow-y: scroll;
+            z-index: 100;
+            display: none;
+        }
+        .out1, .out2, .out3, .out4{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 3%;
+            right: 2%; 
+            border: 0;
+            background-image: url(x.png);
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .pf{
+            width: 150px;
+            margin-left: 4%;
+            margin-right: 4%;
+            margin-bottom: 4%;
+            display: inline-block;
+        }
+        .pf img{
+            width: 100%;
+        }
+        .nos{
+            width: 100%;
+            text-align: right;
+            color: black;
+            font-size: 25px;
+/*            font-weight: bold;*/
+            padding-right: 5%;
+            font-family: 'Nanum Pen Script', cursive;
+        }
+        
+        .page3{
+            background-color: white;
+        }
+        .wall{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.2);
+            top: 20%;
+        }
+        .besty{
+            width: 25%;
+            margin-left: 36%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            background-image: url("stroke.png");
+        }
+        .besty img{
+            width: 100%;
+        }
+        .seasonBtn{
+            width: 100%;
+            padding: 2%;
+            margin-top: 8%;
+        }
+        .num{
+            display: inline-block;
+            width: 9%;
+            height: 35vh;
+            font-size: 200px;
+            color: white;
+            text-align: right;
+            position: relative;
+            font-family: 'Monoton', cursive;
+            margin-right: 15%;
+        }
+        
+        
+        .poster{
+            width: 150%;
+            height: 35vh;
+            position: absolute;
+            left: 85%;
+            top: 0;
+        }
+        .num:first-child .poster{
+            background-image: url("ba1.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .num:nth-child(2) .poster{
+            background-image: url("ba2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .num:nth-child(3) .poster{
+            background-image: url("ba3.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .num:nth-child(4) .poster{
+            background-image: url("ba4.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .showS{
+            width: 100%;
+            height: 35vh;
+            background-color: #46EB7D;
+            position: absolute;
+            left: 0;
+            padding: 15%;
+            display: none;
+        }
+        .showS img{
+            width: 100%;
+            margin-bottom: 75%;
+        }
+        .poster:hover .showS{
+            display: block;
+        }
+
+        ::-webkit-scrollbar {
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: white;
+            border-radius: 15px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            background-color: black; 
+            border: 1px solid white;
+        }
+        ::-webkit-scrollbar-button {
+              background-color: black;
+        }
+        .play{
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+            
+        }
+        #vid{
+            width: 60%;
+            left: 19%;
+            position: absolute;
+            top: 17%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+       <div class="nav"><img src="bar.png">
+           <div class="first"></div>
+           <div class="second"></div>
+           <div class="third"></div>
+           <div class="forth"></div>
+       </div>
+        <div class="page1">
+              <div class="title">
+                  <div class="titleimg"><img src="ba111.png"></div>
+                  <div class="titleimg"><img src="ba222.png"></div>
+                  <div class="titleimg"><img src="ba333.png"></div>
+                  <div class="titleimg"><img src="ba444.png"></div>
+              </div>
+              <div class="back"></div>
+        </div>
+        <div class="page2">
+           <button class="left">&lt;</button>
+           <button class="right">&gt;</button>
+           <div class="seasonWrap">
+                 <div class="season4">
+                     <div class="pre"><img src="pre.png"></div>
+                     <div class="subtitle"><img src="sea4.png"></div>
+                     <div class="map">
+                        <div class="pin blue"><img src="bluepin.png"></div>
+                        <img src="map.png">
+                     </div>
+                     <div class="performer4"><img src="infogreen.png"></div>
+                 </div>
+                 <div class="season3">
+                     <div class="pre"><img src="pre.png"></div>
+                     <div class="next"><img src="next.png"></div>
+                     <div class="subtitle"><img src="sea3.png"></div>
+                     <div class="map">
+                        <div class="pin green1"><img src="greenpin.png"></div>
+                        <div class="pin green2"><img src="greenpin.png"></div>
+                        <div class="pin green3"><img src="greenpin.png"></div>
+                        <div class="pin green4"><img src="greenpin.png"></div>
+                        <img src="map.png">
+                     </div>
+                     <div class="performer3" ><img src="infogreen.png"></div>
+                 </div>
+                 <div class="season2">
+                     <div class="pre"><img src="pre.png"></div>
+                     <div class="next"><img src="next.png"></div>
+                     <div class="subtitle"><img src="sea2.png"></div>
+                     <div class="map">
+                        <div class="pin yellow1"><img src="yellowpin.png"></div>
+                        <div class="pin yellow2"><img src="yellowpin.png"></div>
+                        <img src="map.png">
+                     </div>
+                     <div class="performer2" ><img src="infogreen.png"></div>
+                 </div>
+                 <div class="season1">
+                     <div class="next"><img src="next.png"></div>
+                     <div class="subtitle"><img src="sea1.png"></div>
+                     <div class="map">
+                         <div class="pin red1"><img src="redpin.png"></div>
+                         <div class="pin red2"><img src="redpin.png"></div>
+                         <div class="pin red3"><img src="redpin.png"></div>
+                         <div class="pin red4"><img src="redpin.png"></div>
+                         <img src="map.png">
+                     </div>
+                     <div class="performer1"><img src="infogreen.png"></div>
+                 </div>
+           </div>
+            <div class="pop4">
+                <div class="pf"><img src="%EC%9D%B4%EC%86%8C%EB%9D%BC.jpg"><div class="nos">이소라</div></div>
+                <div class="pf"><img src="%ED%97%A8%EB%A6%AC.jpg"><div class="nos">헨리</div></div>
+                <div class="pf"><img src="%EC%88%98%ED%98%84.jpg"><div class="nos">수현</div></div>
+                <div class="pf"><img src="%ED%95%98%EB%A6%BC.jpg"><div class="nos">하림</div></div>
+                <div class="pf"><img src="%EC%A0%81%EC%9E%AC.jpg"><div class="nos">적재</div></div>
+                <div class="pf"><img src="%ED%81%AC%EB%9F%AC%EC%89%AC.jpg"><div class="nos">크러쉬</div></div>
+                <div class="pf"><img src="%EC%A0%95%EC%8A%B9%ED%99%98.jpg"><div class="nos">정승환</div></div>
+                <div class="pf"><img src="%EC%9D%B4%ED%95%98%EC%9D%B4.jpg"><div class="nos">이하이</div></div>
+                <div class="pf"><img src="%EC%86%8C%ED%96%A5.jpg"><div class="nos">소향</div></div>
+                <input type="button" class="out4">
+            </div>
+            <div class="pop3">
+                <div class="pf"><img src="%EB%B0%95%EC%A0%95%ED%98%84.jpg"><div class="nos">박정현</div></div>
+                <div class="pf"><img src="%ED%95%98%EB%A6%BC.jpg"><div class="nos">하림</div></div>
+                <div class="pf"><img src="%ED%97%A8%EB%A6%AC.jpg"><div class="nos">헨리</div></div>
+                <div class="pf"><img src="%EC%88%98%ED%98%84.jpg"><div class="nos">수현</div></div>
+                <div class="pf"><img src="%EA%B9%80%ED%95%84.jpg"><div class="nos">김필</div></div>
+                <div class="pf"><img src="%EC%9E%84%ED%97%8C%EC%9D%BC.jpg"><div class="nos">임헌일</div></div>
+                <div class="pf"><img src="%EC%9D%B4%EC%A0%81.jpg"><div class="nos">이적</div></div>
+                <div class="pf"><img src="%ED%83%9C%EC%97%B0.jpg"><div class="nos">태연</div></div>
+                <div class="pf"><img src="%ED%8F%B4%ED%82%B4.jpg"><div class="nos">폴킴</div></div>
+                <div class="pf"><img src="%EA%B9%80%ED%98%84%EC%9A%B0.jpg"><div class="nos">김현우</div></div>
+                <div class="pf"><img src="%EC%A0%81%EC%9E%AC.jpg"><div class="nos">적재</div></div>
+                <input type="button" class="out3">
+            </div>
+            <div class="pop2">
+                <div class="pf"><img src="%EA%B9%80%EC%9C%A4%EC%95%84.jpg"><div class="nos">김윤아</div></div>
+                <div class="pf"><img src="%EC%9D%B4%EC%84%A0%EA%B7%9C.jpg"><div class="nos">이선규</div></div>
+                <div class="pf"><img src="%EC%9C%A4%EA%B1%B4.jpg"><div class="nos">윤건</div></div>
+                <div class="pf"><img src="%EB%A1%9C%EC%9D%B4%ED%82%B4.jpg"><div class="nos">로이킴</div></div>
+                <div class="pf"><img src="%EB%B0%95%EC%A0%95%ED%98%84.jpg"><div class="nos">박정현</div></div>
+                <div class="pf"><img src="%ED%95%98%EB%A6%BC.jpg"><div class="nos">하림</div></div>
+                <div class="pf"><img src="%ED%97%A8%EB%A6%AC.jpg"><div class="nos">헨리</div></div>
+                <div class="pf"><img src="%EC%88%98%ED%98%84.jpg"><div class="nos">수현</div></div>
+                <input type="button" class="out2">
+            </div>
+            <div class="pop1">
+                <div class="pf"><img src="%EC%9D%B4%EC%86%8C%EB%9D%BC.jpg"><div class="nos">이소라</div></div>
+                <div class="pf"><img src="%EC%9C%A0%ED%9D%AC%EC%97%B4.jpg"><div class="nos">유희열</div></div>
+                <div class="pf"><img src="%EC%9C%A4%EB%8F%84%ED%98%84.jpg"><div class="nos">윤도현</div></div>
+                <div class="pf"><img src="%EB%85%B8%ED%99%8D%EC%B2%A0.jpg"><div class="nos">노홍철</div></div>
+                <input type="button" class="out1">
+            </div>
+           <div class="infoscreen"></div>
+        </div>
+        <div class="page3">
+            <div class="wall">
+                <div class="besty"><img src="page3.png"></div>
+                <div class="seasonBtn">
+                    <div class="num">1
+                        <div class="poster"><a href="video.html"><div class="showS"><img src="btn1.png"></div></a></div>
+                    </div>
+                    <div class="num">2
+                        <div class="poster"><a href="video.html"><div class="showS"><img src="btn2.png"></div></a></div>
+                    </div>
+                    <div class="num">3
+                        <div class="poster"><a href="video.html"><div class="showS"><img src="btn3.png"></div></a></div>
+                    </div>
+                    <div class="num">4
+                        <div class="poster"><a href="video.html"><div class="showS"><img src="btn4.png"></div></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page4">
+           <div class="play">
+               <video src="small.mp4" id="vid" autoplay="" loop="" muted=""></video>
+           </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $(".title").animate({opacity: "1"}, 2000);
+            $(".title").children().eq(0).animate({top: "-5%"}, 1500);
+            $(".title").children().eq(1).animate({top: "5%"}, 1500);
+            $(".title").children().eq(2).animate({top: "-5%"}, 1500);
+            $(".title").children().eq(3).animate({top: "5%"}, 1500);
+            
+            $(window).on("scroll", function(){
+               var scrollTop = $(this).scrollTop();
+//                alert(scrollTop);
+                if(scrollTop>=90&&scrollTop<130){
+                    $(".map").animate({opacity: "1"}, 700);
+                }else if(scrollTop>=130&&scrollTop<680){
+                    $(".red1").animate({top: "16%"}, 1500);
+                    $(".red2").animate({top: "17%"}, 1900);
+                    $(".red3").animate({top: "21%"}, 2300);
+                    $(".red4").animate({top: "21.3%"}, 2700);
+                }else if(scrollTop>=680&&scrollTop<815){
+                    $(".subtitle").animate({left: "12%"}, 1500);     
+                }else if(scrollTop>=815){
+                    $(".wall").animate({top: 0}, 700);
+                }
+            });
+            
+            $(".right").click(function(){
+                $(".seasonWrap").children().eq(3).animate({opacity: "0"}, 500, function(){
+                    var right = $(".seasonWrap").children().eq(3).detach();
+                    $(".seasonWrap").prepend(right);
+                    $(".seasonWrap").children().eq(0).css("opacity", "1");
+                    $(".seasonWrap").children().eq(3).find(".pin").animate({deg : 360}, {duration: 1200, step: function(now) {
+                            $(this).css({ transform: 'rotateY(' + now + 'deg)' });
+                        }
+                    });
+                      
+                });
+            });
+            
+            $(".left").click(function(){
+                var left = $(".seasonWrap").children().eq(0).detach();
+                $(".seasonWrap").append(left);
+                $(".seasonWrap").children().eq(0).css("opacity", "0");
+                $(".seasonWrap").children().eq(3).animate({opacity: "1"}, 500);
+                $(".subtitle").animate({left: "10%"}, 1500);  
+            });
+            
+            $(".performer1").click(function(){
+                $(".infoscreen").show(500, function(){
+                    $(".pop1").show(500);
+                });
+            });
+            $(".performer2").click(function(){
+                $(".infoscreen").fadeIn(500, function(){
+                    $(".pop2").fadeIn(500);
+                });
+            });
+            $(".performer3").click(function(){
+                $(".infoscreen").fadeIn(500, function(){
+                    $(".pop3").fadeIn(500);
+                });
+            });
+            $(".performer4").click(function(){
+                $(".infoscreen").fadeIn(500, function(){
+                    $(".pop4").fadeIn(500);
+                });
+            });
+            
+            $(".out1").click(function(){
+                $(".pop1").fadeOut(500, function(){
+                    $(".infoscreen").fadeOut(500);
+                });
+            });
+            $(".out2").click(function(){
+                $(".pop2").fadeOut(500, function(){
+                    $(".infoscreen").fadeOut(500);
+                });
+            });
+            $(".out3").click(function(){
+                $(".pop3").fadeOut(500, function(){
+                    $(".infoscreen").fadeOut(500);
+                });
+            });
+            $(".out4").click(function(){
+                $(".pop4").fadeOut(400, function(){
+                    $(".infoscreen").fadeOut(400);
+                });
+            });
+
+           
+        });
+    </script>
+</body>
+</html>
